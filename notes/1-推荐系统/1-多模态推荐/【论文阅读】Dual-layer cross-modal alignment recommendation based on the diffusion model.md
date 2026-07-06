@@ -20,7 +20,7 @@ Multimodal recommendation 、Cross-modal alignment 、Imbalanced data 、Self-su
 
 ## 方法
 
-![11-10-1](E:\2-科研\论文阅读笔记\fig\11-10-1.png)
+![11-10-1](..\fig\11-10-1.png)
 
 ### Multimodal diffusion model
 

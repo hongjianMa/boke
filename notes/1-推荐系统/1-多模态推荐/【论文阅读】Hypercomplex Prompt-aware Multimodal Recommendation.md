@@ -62,7 +62,7 @@ Multimodal; Recommendation; Hypercomplex Algebra; Promptaware; Graph Learning
 
 ## 方法
 
-![11-11-3](E:\2-科研\论文阅读笔记\fig\11-11-3.png)
+![11-11-3](..\fig\11-11-3.png)
 
 ### Hypercomplex Multimodal Encoder（左上）
 

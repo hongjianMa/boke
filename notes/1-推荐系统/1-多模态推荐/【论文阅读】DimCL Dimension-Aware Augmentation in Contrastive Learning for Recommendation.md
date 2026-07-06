@@ -22,7 +22,7 @@ Recommender system, collaborative filtering, dimension-aware augmentation, contr
 
 ## 方法
 
-![11-10-3](E:\2-科研\论文阅读笔记\fig\11-10-3.png)
+![11-10-3](..\fig\11-10-3.png)
 
 ### Training Data
 
