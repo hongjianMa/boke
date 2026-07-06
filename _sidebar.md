@@ -1,0 +1,3 @@
+- [首页](/)
+- 笔记
+  - [使用说明](notes/getting-started.md)
