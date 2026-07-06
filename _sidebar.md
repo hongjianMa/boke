@@ -18,8 +18,7 @@
     - [ITCoHD-MRec](<notes/1-推荐系统/1-多模态推荐/【推荐系统论文】ITCoHD-MRec An Independent Topological Preference-Aware and Cooperative Hypergraph Diffusion-Based Multimodal R.md>)
 
   - 序列推荐（2）
-    - [Time-Aware Side Information Fusion](<notes/1-推荐系统/2-序列推荐/【SR】Time-Aware Adaptive Side Information Fusion for Sequential Recommendation.md>)
-    - [Frequency-enhanced Dual-Path Networks](<notes/1-推荐系统/2-序列推荐/【论文阅读】Exploiting Inter-Session Information with Frequency-enhanced Dual-Path Networks for Sequential Recommendation.md>)
+    - [TASIF](<notes/1-推荐系统/2-序列推荐/【SR】Time-Aware Adaptive Side Information Fusion for Sequential Recommendation.md>)
 
   - 图表素材（2）
     - [好看的方法图](notes/1-推荐系统/好看的图和表/好看的方法图.md)
