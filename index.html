@@ -9,15 +9,18 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/vue.css">
   <style>
     .sidebar-nav li.has-children > p,
-    .sidebar-nav li.has-children > a {
+    .sidebar-nav li.has-children > a,
+    .sidebar-nav li.has-children > .folder-title {
       cursor: pointer;
       user-select: none;
       position: relative;
       padding-left: 18px;
+      display: block;
     }
 
     .sidebar-nav li.has-children > p::before,
-    .sidebar-nav li.has-children > a::before {
+    .sidebar-nav li.has-children > a::before,
+    .sidebar-nav li.has-children > .folder-title::before {
       content: '▾';
       position: absolute;
       left: 0;
@@ -28,7 +31,8 @@
     }
 
     .sidebar-nav li.has-children.is-collapsed > p::before,
-    .sidebar-nav li.has-children.is-collapsed > a::before {
+    .sidebar-nav li.has-children.is-collapsed > a::before,
+    .sidebar-nav li.has-children.is-collapsed > .folder-title::before {
       transform: rotate(-90deg);
     }
 
@@ -44,6 +48,7 @@
     window.$docsify = {
       name: 'HongjianMa的学习笔记',
       repo: '',
+      homepage: 'all-notes.md',
       loadSidebar: true,
       subMaxLevel: 3,
       auto2top: true,
@@ -64,9 +69,28 @@
               var sidebar = document.querySelector('.sidebar-nav');
               if (!sidebar) return;
 
+              function getTitleElement(li) {
+                var title = li.querySelector(':scope > p, :scope > a, :scope > .folder-title');
+                if (title) return title;
+
+                var textNode = Array.prototype.find.call(li.childNodes, function (node) {
+                  return node.nodeType === Node.TEXT_NODE && node.textContent.trim();
+                });
+
+                if (!textNode) return null;
+
+                var span = document.createElement('span');
+                span.className = 'folder-title';
+                span.textContent = textNode.textContent.trim();
+                li.insertBefore(span, textNode);
+                li.removeChild(textNode);
+
+                return span;
+              }
+
               sidebar.querySelectorAll('li').forEach(function (li) {
                 var childList = li.querySelector(':scope > ul');
-                var title = li.querySelector(':scope > p, :scope > a');
+                var title = getTitleElement(li);
                 if (!childList || !title || li.dataset.foldReady === 'true') return;
 
                 li.classList.add('has-children');

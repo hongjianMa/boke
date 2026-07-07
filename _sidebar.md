@@ -1,9 +1,6 @@
 - [HongjianMa的学习笔记](/)
 
-- 使用指南
-  - [博客使用说明](notes/getting-started.md)
-
-- 全部笔记
+- [全部笔记](all-notes.md)
   - 推荐系统
     - 多模态推荐
       - [【论文阅读】DimCL: Dimension-Aware Augmentation in Contrastive Learning for Recommendation](<notes/1-推荐系统/1-多模态推荐/【论文阅读】DimCL Dimension-Aware Augmentation in Contrastive Learning for Recommendation.md>)
