@@ -3,23 +3,25 @@
 - 使用指南
   - [博客使用说明](notes/getting-started.md)
 
-- 推荐系统
-  - 多模态推荐
-    - [DimCL](<notes/1-推荐系统/1-多模态推荐/【论文阅读】DimCL Dimension-Aware Augmentation in Contrastive Learning for Recommendation.md>)
-    - [DCAR-DM](<notes/1-推荐系统/1-多模态推荐/【论文阅读】Dual-layer cross-modal alignment recommendation based on the diffusion model.md>)
-    - [FITMM](<notes/1-推荐系统/1-多模态推荐/【论文阅读】FITMM adaptive frequency-aware multimodal recommendation via information-theoretic representation learning.md>)
-    - [HPMRec](<notes/1-推荐系统/1-多模态推荐/【论文阅读】Hypercomplex Prompt-aware Multimodal Recommendation.md>)
-    - [IGDMRec](<notes/1-推荐系统/1-多模态推荐/【论文阅读】IGDMRec Behavior Conditioned Item Graph Diffusion for  Multimodal Recommendation.md>)
-    - [LETTER](<notes/1-推荐系统/1-多模态推荐/【论文阅读】LETTER Self-Harmonized Representation Learning  for Multimodal Recommendation.md>)
-    - [MDVT](<notes/1-推荐系统/1-多模态推荐/【论文阅读】MDVT Enhancing Multimodal Recommendation with Model-Agnostic Multimodal-Driven Virtual Triplets.md>)
-    - [PEARL](<notes/1-推荐系统/1-多模态推荐/【论文阅读】PEARL A dual-layer graph learning for multimodal recommendation.md>)
-    - [SSR](<notes/1-推荐系统/1-多模态推荐/【论文阅读】Structured Spectral Reasoning for Frequency-Adaptive Multimodal Recommendation.md>)
-    - [TAMER](<notes/1-推荐系统/1-多模态推荐/【论文阅读】TAMER Interest Tree Augmented Modality Graph Recommender for Multimodal Recommendation.md>)
-    - [ITCoHD-MRec](<notes/1-推荐系统/1-多模态推荐/【推荐系统论文】ITCoHD-MRec An Independent Topological Preference-Aware and Cooperative Hypergraph Diffusion-Based Multimodal R.md>)
-
-  - 序列推荐（2）
-    - [TASIF](<notes/1-推荐系统/2-序列推荐/【SR】Time-Aware Adaptive Side Information Fusion for Sequential Recommendation.md>)
-
-  - 图表素材（2）
-    - [好看的方法图](notes/1-推荐系统/好看的图和表/好看的方法图.md)
-    - [好看的实验表](notes/1-推荐系统/好看的图和表/好看的实验表.md)
+- 全部笔记
+  - 推荐系统
+    - 多模态推荐
+      - [【论文阅读】DimCL: Dimension-Aware Augmentation in Contrastive Learning for Recommendation](<notes/1-推荐系统/1-多模态推荐/【论文阅读】DimCL Dimension-Aware Augmentation in Contrastive Learning for Recommendation.md>)
+      - [【论文阅读】Dual-layer cross-modal alignment recommendation based on the diffusion model](<notes/1-推荐系统/1-多模态推荐/【论文阅读】Dual-layer cross-modal alignment recommendation based on the diffusion model.md>)
+      - [【论文阅读】FITMM: adaptive frequency-aware multimodal recommendation via information-theoretic representation learning](<notes/1-推荐系统/1-多模态推荐/【论文阅读】FITMM adaptive frequency-aware multimodal recommendation via information-theoretic representation learning.md>)
+      - [【论文阅读】Hypercomplex Prompt-aware Multimodal Recommendation](<notes/1-推荐系统/1-多模态推荐/【论文阅读】Hypercomplex Prompt-aware Multimodal Recommendation.md>)
+      - [【论文阅读】IGDMRec: Behavior Conditioned Item Graph Diffusion for  Multimodal Recommendation](<notes/1-推荐系统/1-多模态推荐/【论文阅读】IGDMRec Behavior Conditioned Item Graph Diffusion for  Multimodal Recommendation.md>)
+      - [【论文阅读】LETTER: Self-Harmonized Representation Learning  for Multimodal Recommendation](<notes/1-推荐系统/1-多模态推荐/【论文阅读】LETTER Self-Harmonized Representation Learning  for Multimodal Recommendation.md>)
+      - [【论文阅读】MDVT: Enhancing Multimodal Recommendation with Model-Agnostic Multimodal-Driven Virtual Triplets](<notes/1-推荐系统/1-多模态推荐/【论文阅读】MDVT Enhancing Multimodal Recommendation with Model-Agnostic Multimodal-Driven Virtual Triplets.md>)
+      - [【论文阅读】PEARL: A dual-layer graph learning for multimodal recommendation](<notes/1-推荐系统/1-多模态推荐/【论文阅读】PEARL A dual-layer graph learning for multimodal recommendation.md>)
+      - [【论文阅读】Structured Spectral Reasoning for Frequency-Adaptive Multimodal Recommendation](<notes/1-推荐系统/1-多模态推荐/【论文阅读】Structured Spectral Reasoning for Frequency-Adaptive Multimodal Recommendation.md>)
+      - [【论文阅读】TAMER: Interest Tree Augmented Modality Graph Recommender for Multimodal Recommendation](<notes/1-推荐系统/1-多模态推荐/【论文阅读】TAMER Interest Tree Augmented Modality Graph Recommender for Multimodal Recommendation.md>)
+      - [【推荐系统论文】ITCoHD-MRec: An Independent Topological Preference-Aware and Cooperative Hypergraph Diffusion-Based Multimodal Recommender Model](<notes/1-推荐系统/1-多模态推荐/【推荐系统论文】ITCoHD-MRec An Independent Topological Preference-Aware and Cooperative Hypergraph Diffusion-Based Multimodal R.md>)
+    - 序列推荐
+      - [【SR】Time-Aware Adaptive Side Information Fusion for Sequential Recommendation](<notes/1-推荐系统/2-序列推荐/【SR】Time-Aware Adaptive Side Information Fusion for Sequential Recommendation.md>)
+    - 好看的图和表
+      - [好看的方法图](<notes/1-推荐系统/好看的图和表/好看的方法图.md>)
+      - [好看的实验表](<notes/1-推荐系统/好看的图和表/好看的实验表.md>)
+  - 保研面试
+    - 深度学习
+      - [对比学习](<notes/3-保研面试/3-深度学习/1-对比学习.md>)
