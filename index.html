@@ -7,6 +7,35 @@
   <meta name="description" content="个人学习与科研笔记">
   <title>HongjianMa的学习笔记</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/vue.css">
+  <style>
+    .sidebar-nav li.has-children > p,
+    .sidebar-nav li.has-children > a {
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .sidebar-nav li.has-children > p::before,
+    .sidebar-nav li.has-children > a::before {
+      content: '▾';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #42b983;
+      font-size: 12px;
+      transition: transform .18s ease;
+    }
+
+    .sidebar-nav li.has-children.is-collapsed > p::before,
+    .sidebar-nav li.has-children.is-collapsed > a::before {
+      transform: rotate(-90deg);
+    }
+
+    .sidebar-nav li.has-children.is-collapsed > ul {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -28,6 +57,39 @@
         errorText: '复制失败',
         successText: '已复制'
       },
+      plugins: [
+        function (hook) {
+          hook.doneEach(function () {
+            setTimeout(function () {
+              var sidebar = document.querySelector('.sidebar-nav');
+              if (!sidebar) return;
+
+              sidebar.querySelectorAll('li').forEach(function (li) {
+                var childList = li.querySelector(':scope > ul');
+                var title = li.querySelector(':scope > p, :scope > a');
+                if (!childList || !title || li.dataset.foldReady === 'true') return;
+
+                li.classList.add('has-children');
+                li.dataset.foldReady = 'true';
+
+                if (!li.querySelector('.active')) {
+                  li.classList.add('is-collapsed');
+                }
+
+                title.addEventListener('click', function (event) {
+                  if (event.target.tagName.toLowerCase() === 'a' && event.target.getAttribute('href')) {
+                    var href = event.target.getAttribute('href');
+                    if (href !== '#' && href !== '') return;
+                  }
+
+                  event.preventDefault();
+                  li.classList.toggle('is-collapsed');
+                });
+              });
+            }, 0);
+          });
+        }
+      ],
       latex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         displayMath: [['$$', '$$'], ['\\[', '\\]']]
