@@ -8,6 +8,126 @@
   <title>HongjianMa的学习笔记</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/vue.css">
   <style>
+    :root {
+      --theme-color: #22b573;
+      --theme-color-dark: #168a57;
+      --theme-color-light: #e9f8f1;
+      --text-color: #26384d;
+      --muted-color: #718096;
+      --border-color: #e8f0ec;
+      --bg-color: #f6fbf8;
+      --card-bg: rgba(255, 255, 255, .92);
+      --sidebar-width: 330px;
+      --shadow-soft: 0 18px 45px rgba(28, 122, 80, .08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      color: var(--text-color);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(34, 181, 115, .11), transparent 28%),
+        radial-gradient(circle at 90% 2%, rgba(34, 181, 115, .08), transparent 24%),
+        var(--bg-color);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      letter-spacing: .01em;
+    }
+
+    ::selection {
+      color: #fff;
+      background: var(--theme-color);
+    }
+
+    a {
+      color: var(--theme-color);
+      text-decoration: none;
+      transition: color .2s ease, background-color .2s ease, box-shadow .2s ease;
+    }
+
+    a:hover {
+      color: var(--theme-color-dark);
+    }
+
+    .sidebar {
+      width: var(--sidebar-width);
+      border-right: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, .86);
+      backdrop-filter: blur(18px);
+      box-shadow: 10px 0 30px rgba(28, 122, 80, .04);
+      padding: 0 18px;
+    }
+
+    .sidebar > h1 {
+      margin: 28px 0 8px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .sidebar > h1 a {
+      color: var(--text-color);
+    }
+
+    .sidebar > h1::after {
+      content: '';
+      display: block;
+      width: 42px;
+      height: 4px;
+      margin-top: 14px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--theme-color), #92e3b8);
+    }
+
+    .sidebar-nav {
+      padding: 10px 0 34px;
+    }
+
+    .sidebar-nav ul {
+      margin: 0;
+      padding-left: 14px;
+    }
+
+    .sidebar-nav li {
+      position: relative;
+      margin: 4px 0;
+      line-height: 1.7;
+    }
+
+    .sidebar-nav li > p,
+    .sidebar-nav li > a,
+    .sidebar-nav li > .folder-title {
+      border-radius: 10px;
+      color: #395168;
+      font-weight: 500;
+      line-height: 1.45;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+
+    .sidebar-nav li > a {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .sidebar-nav li > a:hover,
+    .sidebar-nav li > .folder-title:hover,
+    .sidebar-nav li > p:hover {
+      background: var(--theme-color-light);
+      color: var(--theme-color-dark);
+    }
+
+    .sidebar-nav li.active > a,
+    .sidebar-nav a.active {
+      color: var(--theme-color-dark);
+      background: linear-gradient(90deg, rgba(34, 181, 115, .16), rgba(34, 181, 115, .05));
+      box-shadow: inset 3px 0 0 var(--theme-color);
+      font-weight: 700;
+    }
+
     .sidebar-nav li.has-children > p,
     .sidebar-nav li.has-children > a,
     .sidebar-nav li.has-children > .folder-title {
@@ -24,8 +144,8 @@
       content: '▾';
       position: absolute;
       left: 0;
-      top: 0;
-      color: #42b983;
+      top: 8px;
+      color: var(--theme-color);
       font-size: 12px;
       transition: transform .18s ease;
     }
@@ -38,6 +158,227 @@
 
     .sidebar-nav li.has-children.is-collapsed > ul {
       display: none;
+    }
+
+    .search {
+      margin: 0 -18px 16px;
+      padding: 18px 18px 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .search input {
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: #f2faf5;
+      color: var(--text-color);
+      font-size: 15px;
+      padding: 11px 16px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+
+    .search input:focus {
+      border-color: rgba(34, 181, 115, .42);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(34, 181, 115, .12);
+    }
+
+    .content {
+      left: var(--sidebar-width);
+      padding-top: 0;
+    }
+
+    .markdown-section {
+      max-width: 980px;
+      margin: 42px auto 80px;
+      padding: 52px 68px 64px;
+      border: 1px solid rgba(232, 240, 236, .9);
+      border-radius: 28px;
+      background: var(--card-bg);
+      box-shadow: var(--shadow-soft);
+      color: var(--text-color);
+      line-height: 1.9;
+    }
+
+    .markdown-section h1,
+    .markdown-section h2,
+    .markdown-section h3,
+    .markdown-section h4 {
+      color: #20334a;
+      font-weight: 800;
+      letter-spacing: .01em;
+    }
+
+    .markdown-section h1 {
+      margin-top: 0;
+      font-size: 40px;
+      line-height: 1.25;
+    }
+
+    .markdown-section h1::after {
+      content: '';
+      display: block;
+      width: 72px;
+      height: 5px;
+      margin-top: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--theme-color), #afecc9);
+    }
+
+    .markdown-section h2 {
+      margin-top: 48px;
+      padding-top: 8px;
+      font-size: 30px;
+    }
+
+    .markdown-section h3 {
+      margin-top: 34px;
+      font-size: 23px;
+    }
+
+    .markdown-section p,
+    .markdown-section li {
+      font-size: 16px;
+    }
+
+    .markdown-section strong {
+      color: #20334a;
+      font-weight: 800;
+    }
+
+    .markdown-section blockquote {
+      margin: 24px 0;
+      padding: 18px 22px;
+      border-left: 5px solid var(--theme-color);
+      border-radius: 0 16px 16px 0;
+      background: linear-gradient(90deg, rgba(34, 181, 115, .12), rgba(34, 181, 115, .04));
+      color: #3d556b;
+      font-weight: 600;
+    }
+
+    .markdown-section table {
+      display: table;
+      width: auto;
+      max-width: 100%;
+      margin: 22px 0;
+      overflow: hidden;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      box-shadow: 0 8px 22px rgba(38, 56, 77, .05);
+    }
+
+    .markdown-section th {
+      background: #ecf9f2;
+      color: #20334a;
+      font-weight: 800;
+    }
+
+    .markdown-section th,
+    .markdown-section td {
+      border: 0;
+      border-bottom: 1px solid var(--border-color);
+      padding: 11px 16px;
+    }
+
+    .markdown-section tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .markdown-section tr:nth-child(even) td {
+      background: #fbfefc;
+    }
+
+    .markdown-section code {
+      border-radius: 7px;
+      background: #edf8f2;
+      color: #16784d;
+      font-size: .92em;
+      padding: 2px 6px;
+    }
+
+    .markdown-section pre {
+      border-radius: 18px;
+      background: #10251b;
+      box-shadow: 0 14px 34px rgba(16, 37, 27, .16);
+    }
+
+    .markdown-section pre > code {
+      background: transparent;
+      color: #d9ffe9;
+      padding: 0;
+    }
+
+    .markdown-section hr {
+      border: 0;
+      height: 1px;
+      margin: 44px 0;
+      background: linear-gradient(90deg, transparent, rgba(34, 181, 115, .45), transparent);
+    }
+
+    .anchor span {
+      color: inherit;
+    }
+
+    .app-nav,
+    .github-corner {
+      display: none;
+    }
+
+    .sidebar-toggle {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 10px 24px rgba(28, 122, 80, .14);
+    }
+
+    .sidebar-toggle span {
+      background-color: var(--theme-color);
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border: 3px solid transparent;
+      border-radius: 999px;
+      background: rgba(34, 181, 115, .46);
+      background-clip: content-box;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 300px;
+        padding: 0 14px;
+      }
+
+      .content {
+        left: 0;
+        padding-top: 16px;
+      }
+
+      .markdown-section {
+        margin: 18px 12px 52px;
+        padding: 32px 22px 42px;
+        border-radius: 20px;
+      }
+
+      .markdown-section h1 {
+        font-size: 31px;
+      }
+
+      .markdown-section h2 {
+        font-size: 25px;
+      }
     }
   </style>
 </head>
