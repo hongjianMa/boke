@@ -33,7 +33,7 @@
 - 保研面试
   - 自己的论文
     - DuGRec
-      - [DCT， Discrete Cosine Transform，离散余弦变换。](<notes/3-保研面试/1-自己的论文/1-DuGRec/1-DCT.md>)
+      - [DCT](<notes/3-保研面试/1-自己的论文/1-DuGRec/1-DCT.md>)
   - 推荐系统
     - [实验指标](<notes/3-保研面试/2-推荐系统/1-实验指标.md>)
   - 深度学习

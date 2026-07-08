@@ -300,15 +300,76 @@
     }
 
     .markdown-section pre {
+      position: relative;
+      margin: 24px 0;
+      padding: 22px 20px 18px;
+      border: 1px solid #d8eee3;
       border-radius: 18px;
-      background: #10251b;
-      box-shadow: 0 14px 34px rgba(16, 37, 27, .16);
+      background:
+        linear-gradient(180deg, rgba(232, 249, 240, .96), rgba(255, 255, 255, .96)),
+        #fff;
+      box-shadow: 0 12px 28px rgba(28, 122, 80, .08);
+      overflow: auto;
+    }
+
+    .markdown-section pre::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      border-radius: 18px 18px 0 0;
+      background: linear-gradient(90deg, var(--theme-color), #a7ebc8);
     }
 
     .markdown-section pre > code {
       background: transparent;
-      color: #d9ffe9;
+      color: #20334a;
+      display: block;
+      font-family: "JetBrains Mono", "Fira Code", Consolas, "SFMono-Regular", monospace;
+      font-size: 14px;
+      line-height: 1.75;
       padding: 0;
+    }
+
+    .markdown-section pre::after {
+      top: 12px;
+      right: 16px;
+      color: #168a57;
+      font-size: 12px;
+      font-weight: 700;
+      opacity: .68;
+    }
+
+    .markdown-section pre .token.comment,
+    .markdown-section pre .token.prolog,
+    .markdown-section pre .token.doctype,
+    .markdown-section pre .token.cdata {
+      color: #7b9487;
+    }
+
+    .markdown-section pre .token.keyword,
+    .markdown-section pre .token.selector,
+    .markdown-section pre .token.important {
+      color: #0f8b5f;
+      font-weight: 700;
+    }
+
+    .markdown-section pre .token.string,
+    .markdown-section pre .token.attr-value {
+      color: #237a46;
+    }
+
+    .markdown-section pre .token.function,
+    .markdown-section pre .token.class-name {
+      color: #2869a8;
+    }
+
+    .markdown-section pre .token.number,
+    .markdown-section pre .token.boolean,
+    .markdown-section pre .token.constant {
+      color: #b56b16;
     }
 
     .markdown-section hr {

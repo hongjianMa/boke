@@ -21,13 +21,19 @@ function cleanTitle(name) {
 }
 
 function getMarkdownTitle(filePath) {
+  const fileNameTitle = cleanTitle(path.basename(filePath));
+
+  if (fileNameTitle.length <= 12) {
+    return fileNameTitle;
+  }
+
   const content = fs.readFileSync(filePath, 'utf8');
   const heading = content
     .split(/\r?\n/)
     .map((line) => line.trim())
     .find((line) => /^#\s+/.test(line));
 
-  return heading ? heading.replace(/^#\s+/, '').trim() : cleanTitle(path.basename(filePath));
+  return heading ? heading.replace(/^#\s+/, '').trim() : fileNameTitle;
 }
 
 function sortByNumberThenName(a, b) {
