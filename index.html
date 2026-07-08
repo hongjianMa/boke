@@ -346,30 +346,70 @@
     .markdown-section pre .token.prolog,
     .markdown-section pre .token.doctype,
     .markdown-section pre .token.cdata {
-      color: #7b9487;
+      color: #7f948a;
+      font-style: italic;
     }
 
     .markdown-section pre .token.keyword,
+    .markdown-section pre .token.control-flow,
     .markdown-section pre .token.selector,
-    .markdown-section pre .token.important {
-      color: #0f8b5f;
+    .markdown-section pre .token.important,
+    .markdown-section pre .token.atrule {
+      color: #1f7ae0;
       font-weight: 700;
     }
 
     .markdown-section pre .token.string,
-    .markdown-section pre .token.attr-value {
-      color: #237a46;
+    .markdown-section pre .token.char,
+    .markdown-section pre .token.attr-value,
+    .markdown-section pre .token.regex {
+      color: #d26a1b;
     }
 
     .markdown-section pre .token.function,
-    .markdown-section pre .token.class-name {
-      color: #2869a8;
+    .markdown-section pre .token.method {
+      color: #009f8b;
+      font-weight: 700;
+    }
+
+    .markdown-section pre .token.class-name,
+    .markdown-section pre .token.builtin {
+      color: #8a5cf6;
+      font-weight: 700;
+    }
+
+    .markdown-section pre .token.property,
+    .markdown-section pre .token.variable,
+    .markdown-section pre .token.parameter,
+    .markdown-section pre .token.attr-name {
+      color: #0f5f99;
     }
 
     .markdown-section pre .token.number,
     .markdown-section pre .token.boolean,
     .markdown-section pre .token.constant {
-      color: #b56b16;
+      color: #c2417b;
+      font-weight: 700;
+    }
+
+    .markdown-section pre .token.operator,
+    .markdown-section pre .token.punctuation {
+      color: #60758a;
+    }
+
+    .markdown-section pre .token.decorator,
+    .markdown-section pre .token.annotation,
+    .markdown-section pre .token.tag {
+      color: #22a06b;
+      font-weight: 700;
+    }
+
+    .markdown-section pre .token.deleted {
+      color: #d64545;
+    }
+
+    .markdown-section pre .token.inserted {
+      color: #159957;
     }
 
     .markdown-section hr {
@@ -512,6 +552,11 @@
                   li.classList.toggle('is-collapsed');
                 });
               });
+
+              var article = document.querySelector('.markdown-section');
+              if (window.Prism && article) {
+                Prism.highlightAllUnder(article);
+              }
             }, 0);
           });
         }
@@ -525,6 +570,12 @@
   <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/search.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-latex@0.5.2"></script>
 </body>
