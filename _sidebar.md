@@ -24,6 +24,12 @@
       - DuGRec
         - [DCT](<notes/3-保研面试/1-自己的论文/1-DuGRec/1-DCT.md>)
         - [方法流](<notes/3-保研面试/1-自己的论文/1-DuGRec/2-方法流.md>)
+        - [三个对比学习细节](<notes/3-保研面试/1-自己的论文/1-DuGRec/3-三个对比学习细节.md>)
+        - [item图的构建细节](<notes/3-保研面试/1-自己的论文/1-DuGRec/4-item图的构建细节.md>)
+        - [频域构图KNN](<notes/3-保研面试/1-自己的论文/1-DuGRec/5-频域构图KNN.md>)
+        - [user-item图重构](<notes/3-保研面试/1-自己的论文/1-DuGRec/6-user-item图重构.md>)
+        - [EMA](<notes/3-保研面试/1-自己的论文/1-DuGRec/7-EMA.md>)
+        - [实验部分](<notes/3-保研面试/1-自己的论文/1-DuGRec/8-实验部分.md>)
     - 推荐系统
       - [实验指标](<notes/3-保研面试/2-推荐系统/1-实验指标.md>)
     - 深度学习
