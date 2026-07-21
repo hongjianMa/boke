@@ -48,3 +48,6 @@
     - Transformer
       - [自注意力](<notes/4-手撕深度学习代码/1-Transformer/1-自注意力.md>)
       - [多头注意力](<notes/4-手撕深度学习代码/1-Transformer/2-多头注意力.md>)
+    - AI基础概念
+      - [KL散度](<notes/4-手撕深度学习代码/2-AI基础概念/1-KL散度.md>)
+      - [SafeSoftmax](<notes/4-手撕深度学习代码/2-AI基础概念/2-SafeSoftmax.md>)
