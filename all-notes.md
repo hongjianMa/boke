@@ -62,6 +62,10 @@
   - AI基础概念
     - [KL散度](<notes/4-手撕深度学习代码/2-AI基础概念/1-KL散度.md>)
     - [SafeSoftmax](<notes/4-手撕深度学习代码/2-AI基础概念/2-SafeSoftmax.md>)
+  - 常见损失函数
+    - [二分类交叉熵BCE](<notes/4-手撕深度学习代码/3-常见损失函数/1-二分类交叉熵BCE.md>)
+    - [BPRLoss](<notes/4-手撕深度学习代码/3-常见损失函数/2-BPRLoss.md>)
+    - [InfoNCE](<notes/4-手撕深度学习代码/3-常见损失函数/3-InfoNCE.md>)
 
 ---
 
