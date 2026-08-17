@@ -18,6 +18,7 @@
       --bg-color: #f6fbf8;
       --card-bg: rgba(255, 255, 255, .92);
       --sidebar-width: 330px;
+      --toc-width: 230px;
       --shadow-soft: 0 18px 45px rgba(28, 122, 80, .08);
     }
 
@@ -262,6 +263,98 @@
       box-shadow: var(--shadow-soft);
       color: var(--text-color);
       line-height: 1.9;
+    }
+
+    .document-toc {
+      display: none;
+      position: fixed;
+      z-index: 20;
+      top: 72px;
+      right: 24px;
+      bottom: 32px;
+      width: var(--toc-width);
+      padding: 10px 8px 18px 18px;
+      overflow-y: auto;
+      border-left: 1px solid #dceae3;
+    }
+
+    .document-toc.is-empty {
+      display: none;
+    }
+
+    .document-toc__title {
+      margin: 0 8px 14px;
+      color: #26384d;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .document-toc__title::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 3px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: var(--theme-color);
+    }
+
+    .document-toc__nav {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .document-toc__link {
+      position: relative;
+      display: block;
+      min-width: 0;
+      border-radius: 6px;
+      color: #68798b;
+      font-size: 13px;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+      padding: 6px 8px;
+      transition: color .18s ease, background-color .18s ease, box-shadow .18s ease;
+    }
+
+    .document-toc__link:hover {
+      color: var(--theme-color-dark);
+      background: rgba(34, 181, 115, .07);
+    }
+
+    .document-toc__link--level-2 {
+      color: #40566c;
+      font-weight: 650;
+    }
+
+    .document-toc__link--level-1 {
+      margin-top: 9px;
+      color: #26384d;
+      font-size: 13.5px;
+      font-weight: 800;
+    }
+
+    .document-toc__link--level-1:first-child {
+      margin-top: 0;
+    }
+
+    .document-toc__link--level-3 {
+      margin-left: 12px;
+      font-size: 12.5px;
+    }
+
+    .document-toc__link--level-4 {
+      margin-left: 24px;
+      color: #84919e;
+      font-size: 12px;
+    }
+
+    .document-toc__link.is-active {
+      color: var(--theme-color-dark);
+      background: var(--theme-color-light);
+      box-shadow: inset 2px 0 0 var(--theme-color);
+      font-weight: 700;
     }
 
     .markdown-section h1,
@@ -532,6 +625,16 @@
       background: transparent;
     }
 
+    @media (min-width: 1400px) {
+      .content {
+        padding-right: calc(var(--toc-width) + 48px);
+      }
+
+      .document-toc:not(.is-empty) {
+        display: block;
+      }
+    }
+
     @media (max-width: 768px) {
       .sidebar {
         width: 300px;
@@ -568,7 +671,7 @@
       repo: '',
       homepage: 'all-notes.md',
       loadSidebar: true,
-      subMaxLevel: 3,
+      subMaxLevel: 0,
       auto2top: true,
       search: {
         placeholder: '搜索笔记',
@@ -585,7 +688,6 @@
           hook.doneEach(function () {
             setTimeout(function () {
               var sidebar = document.querySelector('.sidebar-nav');
-              if (!sidebar) return;
 
               function getTitleElement(li) {
                 var title = li.querySelector(':scope > p, :scope > a, :scope > .folder-title');
@@ -606,33 +708,119 @@
                 return span;
               }
 
-              sidebar.querySelectorAll('li').forEach(function (li) {
-                var childList = li.querySelector(':scope > ul');
-                var title = getTitleElement(li);
-                if (!childList || !title || li.dataset.foldReady === 'true') return;
+              if (sidebar) {
+                sidebar.querySelectorAll('li').forEach(function (li) {
+                  var childList = li.querySelector(':scope > ul');
+                  var title = getTitleElement(li);
+                  if (!childList || !title || li.dataset.foldReady === 'true') return;
 
-                li.classList.add('has-children');
-                li.dataset.foldReady = 'true';
+                  li.classList.add('has-children');
+                  li.dataset.foldReady = 'true';
 
-                if (!li.querySelector('.active')) {
-                  li.classList.add('is-collapsed');
-                }
-
-                title.addEventListener('click', function (event) {
-                  if (event.target.tagName.toLowerCase() === 'a' && event.target.getAttribute('href')) {
-                    var href = event.target.getAttribute('href');
-                    if (href !== '#' && href !== '') return;
+                  if (!li.querySelector('.active')) {
+                    li.classList.add('is-collapsed');
                   }
 
-                  event.preventDefault();
-                  li.classList.toggle('is-collapsed');
+                  title.addEventListener('click', function (event) {
+                    if (event.target.tagName.toLowerCase() === 'a' && event.target.getAttribute('href')) {
+                      var href = event.target.getAttribute('href');
+                      if (href !== '#' && href !== '') return;
+                    }
+
+                    event.preventDefault();
+                    li.classList.toggle('is-collapsed');
+                  });
                 });
-              });
+              }
 
               var article = document.querySelector('.markdown-section');
               if (window.Prism && article) {
                 Prism.highlightAllUnder(article);
               }
+
+              var toc = document.querySelector('.document-toc');
+              if (!toc) {
+                toc = document.createElement('aside');
+                toc.className = 'document-toc';
+                toc.setAttribute('aria-label', '本文目录');
+                toc.innerHTML = '<div class="document-toc__title">本文目录</div><nav class="document-toc__nav"></nav>';
+                document.body.appendChild(toc);
+              }
+
+              var tocNav = toc.querySelector('.document-toc__nav');
+              var documentTitle = article ? article.querySelector('h1') : null;
+              var headings = article
+                ? Array.prototype.slice.call(article.querySelectorAll('h1, h2, h3, h4')).filter(function (heading) {
+                  return heading !== documentTitle;
+                })
+                : [];
+
+              tocNav.innerHTML = '';
+              toc.scrollTop = 0;
+              delete toc.dataset.activeIndex;
+              toc.classList.toggle('is-empty', headings.length === 0);
+
+              headings.forEach(function (heading, index) {
+                var anchor = heading.querySelector(':scope > .anchor');
+                var link = document.createElement('a');
+                var level = heading.tagName.slice(1);
+
+                link.className = 'document-toc__link document-toc__link--level-' + level;
+                link.href = anchor ? anchor.getAttribute('href') : '#';
+                link.textContent = heading.textContent.trim();
+                link.dataset.tocIndex = index;
+                tocNav.appendChild(link);
+              });
+
+              if (window.documentTocScrollHandler) {
+                window.removeEventListener('scroll', window.documentTocScrollHandler);
+              }
+
+              var updateTocActive = function () {
+                if (!headings.length) return;
+
+                var activeIndex = 0;
+                headings.some(function (heading, index) {
+                  if (heading.getBoundingClientRect().top <= 140) {
+                    activeIndex = index;
+                    return false;
+                  }
+
+                  return true;
+                });
+
+                var activeLink = null;
+                tocNav.querySelectorAll('.document-toc__link').forEach(function (link, index) {
+                  var isActive = index === activeIndex;
+                  link.classList.toggle('is-active', isActive);
+
+                  if (isActive) {
+                    link.setAttribute('aria-current', 'location');
+                    activeLink = link;
+                  } else {
+                    link.removeAttribute('aria-current');
+                  }
+                });
+
+                if (activeLink && toc.dataset.activeIndex !== String(activeIndex)) {
+                  var linkTop = activeLink.offsetTop;
+                  var linkBottom = linkTop + activeLink.offsetHeight;
+                  var visibleTop = toc.scrollTop + 52;
+                  var visibleBottom = toc.scrollTop + toc.clientHeight - 20;
+
+                  if (linkTop < visibleTop) {
+                    toc.scrollTop = Math.max(0, linkTop - 72);
+                  } else if (linkBottom > visibleBottom) {
+                    toc.scrollTop = linkBottom - toc.clientHeight + 28;
+                  }
+
+                  toc.dataset.activeIndex = String(activeIndex);
+                }
+              };
+
+              window.documentTocScrollHandler = updateTocActive;
+              window.addEventListener('scroll', updateTocActive, { passive: true });
+              updateTocActive();
             }, 0);
           });
         }
