@@ -70,6 +70,12 @@
       - [对比学习和子图结合](<notes/3-保研面试/1-自己的论文/2-SuCoRec/3-对比学习和子图结合.md>)
       - [2. 为什么不直接让 $h$ 和 $i^c$ 对齐，而是先给 $h$ 加噪声](<notes/3-保研面试/1-自己的论文/2-SuCoRec/4-Item Content Self-Distillation部分.md>)
       - [JS散度](<notes/3-保研面试/1-自己的论文/2-SuCoRec/5-JS散度.md>)
+    - CPPRec
+      - [方法流](<notes/3-保研面试/1-自己的论文/3-CPPRec/1-方法流.md>)
+      - [PCA](<notes/3-保研面试/1-自己的论文/3-CPPRec/2-PCA.md>)
+    - FreCons
+      - f
+        - [方法流](<notes/3-保研面试/1-自己的论文/4-FreCons/f/1-方法流.md>)
   - 推荐系统
     - [实验指标](<notes/3-保研面试/2-推荐系统/1-实验指标.md>)
   - 深度学习
