@@ -661,6 +661,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="assets/reading.css">
 </head>
 
 <body>
@@ -734,6 +735,32 @@
               }
 
               var article = document.querySelector('.markdown-section');
+              if (article) {
+                var oldMeta = article.querySelector('.article-meta');
+                if (oldMeta) oldMeta.remove();
+                var currentLink = sidebar && sidebar.querySelector('li.active > a');
+                var pathParts = [];
+                var parentItem = currentLink && currentLink.parentElement.parentElement.closest('li');
+                while (parentItem) {
+                  var parentTitle = getTitleElement(parentItem);
+                  if (parentTitle && !parentTitle.querySelector('a')) {
+                    pathParts.unshift(parentTitle.textContent.trim());
+                  }
+                  parentItem = parentItem.parentElement.closest('li');
+                }
+                var meta = document.createElement('div');
+                meta.className = 'article-meta';
+                var path = document.createElement('span');
+                path.className = 'article-meta__path';
+                path.textContent = pathParts.join(' / ') || '学习笔记';
+                var readingTime = document.createElement('span');
+                readingTime.className = 'article-meta__time';
+                var minutes = Math.max(1, Math.ceil(article.textContent.replace(/\s/g, '').length / 450));
+                readingTime.textContent = '约 ' + minutes + ' 分钟阅读';
+                meta.appendChild(path);
+                meta.appendChild(readingTime);
+                article.prepend(meta);
+              }
               if (window.Prism && article) {
                 Prism.highlightAllUnder(article);
               }
