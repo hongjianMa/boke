@@ -73,12 +73,14 @@
     - CPPRec
       - [方法流](<notes/3-保研面试/1-自己的论文/3-CPPRec/1-方法流.md>)
       - [PCA](<notes/3-保研面试/1-自己的论文/3-CPPRec/2-PCA.md>)
+      - [主要思想](<notes/3-保研面试/1-自己的论文/3-CPPRec/3-主要思想.md>)
     - FreCons
-      - f
-        - [方法流](<notes/3-保研面试/1-自己的论文/4-FreCons/f/1-方法流.md>)
+      - [方法流](<notes/3-保研面试/1-自己的论文/4-FreCons/1-方法流.md>)
     - MAIL
       - [方法流](<notes/3-保研面试/1-自己的论文/5-MAIL/1-方法流.md>)
       - [MAIC和反事实构建](<notes/3-保研面试/1-自己的论文/5-MAIL/2-MAIC和反事实构建.md>)
+      - [Counterfactual](<notes/3-保研面试/1-自己的论文/5-MAIL/3-Counterfactual.md>)
+      - [身份构建](<notes/3-保研面试/1-自己的论文/5-MAIL/4-身份构建.md>)
   - 推荐系统
     - [实验指标](<notes/3-保研面试/2-推荐系统/1-实验指标.md>)
   - 深度学习
